@@ -2,9 +2,11 @@
   "name": "awwwards-cours",
   "version": "1.0.0",
   "scripts": {
-    "build": "webpack --progress --config webpack.config.build.js",
-    "development": "webpack server --progress --config webpack.config.development.js",
-    "start": "npm run development"
+    "backend:build": "node app.js",
+    "backend:development": "nodemon app.js",
+    "frontend:build": "webpack --progress --config webpack.config.build.js",
+    "frontend:development": "webpack server --progress --config webpack.config.development.js",
+    "start": "concurrently --kill-others \"npm run backend:development\" \"npm run frontend:development\""
   },
   "author": "Maxime Joubert",
   "license": "ISC",
@@ -16,6 +18,7 @@
     "eslint": "^7.32.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.24.0",
+    "eslint-plugin-pug": "^1.2.4",
     "file-loader": "^6.2.0",
     "glslify-loader": "^2.0.0",
     "image-minimizer-webpack-plugin": "^2.2.0",
@@ -34,6 +37,9 @@
     "webpack-merge": "^5.8.0"
   },
   "dependencies": {
-    "@babel/core": "^7.15.0"
+    "@babel/core": "^7.15.0",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.12",
+    "pug": "^3.0.2"
   }
 }
